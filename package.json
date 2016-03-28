@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Team-Udaan/udaan-gslr/issues"
   },
-  "homepage": "https://github.com/Team-Udaan/udaan-gslr#readme"
+  "homepage": "https://github.com/Team-Udaan/udaan-gslr#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
