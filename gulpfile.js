@@ -8,6 +8,8 @@ var vendor = {
   scripts: [
     'bower_components/angular/angular.min.js',
     'bower_components/angular-route/angular-route.min.js',
+    'bower_components/angular-animate/angular-animate.min.js',
+    'bower_components/angular-aria/angular-aria.min.js',
     'bower_components/angular-material/angular-material.min.js'
   ],
   styles: [
@@ -65,7 +67,6 @@ gulp.task('styles', function () {
 gulp.task('scripts:vendor', function () {
   return gulp.src(vendor.scripts)
     .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
@@ -81,6 +82,9 @@ gulp.task('build', ['index', 'templates', 'scripts', 'styles']);
 
 // Build Vendor
 gulp.task('build:vendor', ['scripts:vendor', 'styles:vendor']);
+
+// Build All
+gulp.task('build:all', ['build:vendor', 'build']);
 
 // Watch
 gulp.task('watch', function () {
