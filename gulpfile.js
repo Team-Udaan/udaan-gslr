@@ -1,52 +1,65 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var through = require('through2');
+var cleanCSS = require('gulp-clean-css');
 
-var paths = {
-  index: 'src/index.html',
-  templates: 'src/templates/**/*.html',
-  scripts: 'src/scripts/**/*.js',
-  styles: 'src/styles/**/*.css',
-  dist: 'dist'
-};
+function uncommentProd(config) {
+  return through.obj(function (file, enc, cb) {
+    var fileContents = file.contents.toString(enc), commentedProd, uncommentedProd;
+    // remove dev
+    fileContents = fileContents.replace(/\s*<!-- begin:dev -->[^]*<!-- end:dev -->\s*/g, '');
+    // remove prod
+    commentedProd = fileContents.match(/<!-- begin:prod -->[^]*<!-- end:prod -->/g)[0];
+    uncommentedProd = commentedProd
+      .replace(/<!-- begin:prod -->/, '\n')
+      .replace(/\s*<!-- end:prod -->\s*/, '')
+      .replace(/(<!--|-->)/g, '');
+    file.contents = new Buffer(fileContents.replace(commentedProd, uncommentedProd));
+    cb(null, file);
+  });
+}
 
-// Copy Index
-gulp.task('copy:index', function () {
-  return gulp.src(paths.index)
-    .pipe(gulp.dest(paths.dist));
+// Index
+gulp.task('index', function () {
+  return gulp.src('src/index.html')
+    .pipe(uncommentProd())
+    .pipe(gulp.dest('dist'));
 });
 
-// Copy Templates
-gulp.task('copy:templates', function () {
-  return gulp.src(paths.templates)
-    .pipe(gulp.dest(paths.dist));
+// Templates
+gulp.task('templates', function () {
+  return gulp.src('src/templates/*.html')
+    .pipe(gulp.dest('dist/templates'));
 });
 
-// Copy Scripts
-gulp.task('copy:scripts', function () {
-  return gulp.src(paths.scripts)
-    .pipe(concat('scripts.js'))
+// Scripts
+gulp.task('scripts', function () {
+  return gulp.src('src/scripts/**/*.js')
+    .pipe(concat('scripts.min.js'))
     .pipe(uglify({
       mangle: false
     }))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest('dist'));
 });
 
-// Copy Styles
-gulp.task('copy:styles', function () {
-  return gulp.src(paths.styles)
-    .pipe(gulp.dest(paths.dist));
+// Style
+gulp.task('style', function () {
+  return gulp.src('src/style.css')
+    .pipe(concat('styles.min.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('dist'));
 });
 
 // Build
-gulp.task('build', ['copy:index', 'copy:templates', 'copy:scripts', 'copy:styles']);
+gulp.task('build', ['index', 'templates', 'scripts', 'style']);
 
 // Watch
 gulp.task('watch', function () {
-  gulp.watch(paths.index, ['copy:index']);
-  gulp.watch(paths.templates, ['copy:templates']);
-  gulp.watch(paths.scripts, ['copy:scripts']);
-  gulp.watch(paths.styles, ['copy:styles']);
+  gulp.watch('src/index.html', ['index']);
+  gulp.watch('src/templates/*.html', ['templates']);
+  gulp.watch('src/scripts/**/*.js', ['scripts']);
+  gulp.watch('src/style.css', ['style']);
 });
 
 // Default

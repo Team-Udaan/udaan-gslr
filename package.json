@@ -24,7 +24,9 @@
   "homepage": "https://github.com/Team-Udaan/udaan-gslr#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.4",
     "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "through2": "^2.0.1"
   }
 }
