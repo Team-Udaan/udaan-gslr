@@ -1,0 +1,25 @@
+{
+  "name": "udaan-gslr",
+  "version": "1.0.0",
+  "description": "Udaan GSLR Voting App",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Udaan/udaan-gslr.git"
+  },
+  "keywords": [
+    "Udaan",
+    "GSLR",
+    "Voting",
+    "App"
+  ],
+  "author": "Dhruvin Gandhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Udaan/udaan-gslr/issues"
+  },
+  "homepage": "https://github.com/Team-Udaan/udaan-gslr#readme"
+}

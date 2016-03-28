@@ -1,0 +1,29 @@
+{
+  "name": "udaan-gslr",
+  "homepage": "https://github.com/Team-Udaan/udaan-gslr",
+  "authors": [
+    "Dhruvin Gandhi <dhruvin2910@gmail.com>"
+  ],
+  "description": "Udaan GSLR Voting App",
+  "main": "src/index.html",
+  "moduleType": [],
+  "keywords": [
+    "Udaan",
+    "GSLR",
+    "Voting",
+    "App"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "angular-material": "^1.0.6"
+  }
+}
