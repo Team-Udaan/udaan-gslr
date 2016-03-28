@@ -46,7 +46,7 @@ function insertTemplates(config) {
       templates = fs.readdirSync('src/templates');
       templateString = templates.reduce(function (templateStr, template) {
         return templateStr.concat(
-          '<script type="text/ng-template" id="' + template + '">\n' + fs.readFileSync('src/templates/' + template) + '\n</script>\n'
+          '<script type="text/ng-template" id="templates/' + template + '">\n' + fs.readFileSync('src/templates/' + template) + '\n</script>\n'
         );
       }, '');
       file.contents = new Buffer(fileContents.replace(/<!-- insert:templates -->/, templateString));
@@ -68,9 +68,7 @@ gulp.task('index', function () {
 gulp.task('scripts', function () {
   return gulp.src('src/scripts/**/*.js')
     .pipe(concat('scripts.min.js'))
-    .pipe(uglify({
-      mangle: false
-    }))
+    .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
 
