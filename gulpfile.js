@@ -4,6 +4,17 @@ var uglify = require('gulp-uglify');
 var through = require('through2');
 var cleanCSS = require('gulp-clean-css');
 
+var vendor = {
+  scripts: [
+    'bower_components/angular/angular.min.js',
+    'bower_components/angular-route/angular-route.min.js',
+    'bower_components/angular-material/angular-material.min.js'
+  ],
+  styles: [
+    'bower_components/angular-material/angular-material.min.css'
+  ]
+};
+
 function uncommentProd(config) {
   return through.obj(function (file, enc, cb) {
     var fileContents = file.contents.toString(enc), commentedProd, uncommentedProd;
@@ -44,22 +55,39 @@ gulp.task('scripts', function () {
 });
 
 // Style
-gulp.task('style', function () {
-  return gulp.src('src/style.css')
+gulp.task('styles', function () {
+  return gulp.src('src/styles/*.css')
     .pipe(concat('styles.min.css'))
     .pipe(cleanCSS())
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('scripts:vendor', function () {
+  return gulp.src(vendor.scripts)
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('styles:vendor', function () {
+  return gulp.src(vendor.styles)
+    .pipe(concat('vendor.min.css'))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('dist'));
+});
+
 // Build
-gulp.task('build', ['index', 'templates', 'scripts', 'style']);
+gulp.task('build', ['index', 'templates', 'scripts', 'styles']);
+
+// Build Vendor
+gulp.task('build:vendor', ['scripts:vendor', 'styles:vendor']);
 
 // Watch
 gulp.task('watch', function () {
   gulp.watch('src/index.html', ['index']);
   gulp.watch('src/templates/*.html', ['templates']);
   gulp.watch('src/scripts/**/*.js', ['scripts']);
-  gulp.watch('src/style.css', ['style']);
+  gulp.watch('src/styles.css', ['styles']);
 });
 
 // Default
