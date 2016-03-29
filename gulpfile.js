@@ -4,6 +4,9 @@ var uglify = require('gulp-uglify');
 var through = require('through2');
 var cleanCSS = require('gulp-clean-css');
 var fs = require('fs');
+var inline = require('gulp-inline');
+var htmlmin = require('gulp-htmlmin');
+var rename = require('gulp-rename');
 
 var vendor = {
   scripts: [
@@ -101,6 +104,24 @@ gulp.task('build:vendor', ['scripts:vendor', 'styles:vendor']);
 
 // Build All
 gulp.task('build:all', ['build:vendor', 'build']);
+
+// Inline
+gulp.task('inline', ['build:all'], function () {
+  return gulp.src('dist/index.html')
+    .pipe(inline({
+      base: 'dist/'
+    }))
+    .pipe(rename('index.inline.html'))
+    .pipe(gulp.dest('dist'));
+});
+
+// Html Min
+gulp.task('htmlmin', ['inline'], function () {
+  return gulp.src('dist/index.inline.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(rename('index.min.html'))
+    .pipe(gulp.dest('dist'));
+});
 
 // Watch
 gulp.task('watch', function () {
