@@ -4,6 +4,9 @@
   angular.module('gslrApp')
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
+        .when('/connect', {
+          templateUrl: 'templates/connect.html'
+        })
         .when('/register', {
           templateUrl: 'templates/register.html',
           controller: 'RegisterCtrl'
@@ -17,7 +20,7 @@
           controller: 'PollCtrl'
         })
         .otherwise({
-          redirectTo: '/register'
+          redirectTo: '/connect'
         });
     }]);
 

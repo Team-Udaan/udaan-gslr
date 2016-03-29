@@ -1,0 +1,4 @@
+var GSLR_DATA = {
+  WEBSOCKET_URL: 'ws://192.168.1.13:8081/ws',
+  WEBSOCKET_DEBUG: false
+};

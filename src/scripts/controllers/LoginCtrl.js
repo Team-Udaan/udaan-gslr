@@ -2,8 +2,14 @@
   "use strict";
 
   angular.module('gslrApp')
-    .controller('LoginCtrl', ['$scope', function ($scope) {
-      $scope.title = 'Login';
-    }]);
+    .controller('LoginCtrl', [
+      'ProperViewService',
+      function (ProperViewService) {
+
+        if (ProperViewService()) {
+
+        }
+
+      }]);
 
 })();

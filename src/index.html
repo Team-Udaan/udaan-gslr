@@ -15,11 +15,16 @@
   <script src="../bower_components/angular-aria/angular-aria.js"></script>
   <script src="../bower_components/angular-material/angular-material.js"></script>
 
+  <script src="scripts/config.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/routes.js"></script>
+  <script src="scripts/controllers/GSLRCtrl.js"></script>
+  <script src="scripts/controllers/ConnectCtrl.js"></script>
   <script src="scripts/controllers/RegisterCtrl.js"></script>
   <script src="scripts/controllers/LoginCtrl.js"></script>
   <script src="scripts/controllers/PollCtrl.js"></script>
+  <script src="scripts/services/WebSocketService.js"></script>
+  <script src="scripts/services/ProperViewService.js"></script>
   <!-- end:dev -->
 
   <!-- begin:prod -->
@@ -30,7 +35,7 @@
   <!-- end:prod -->
 
 </head>
-<body>
+<body ng-controller="GSLRCtrl">
 <ng-view></ng-view>
 
 <!-- insert:templates -->

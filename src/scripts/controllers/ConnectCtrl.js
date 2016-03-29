@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module('gslrApp')
-    .controller('PollCtrl', [
+    .controller('ConnectCtrl', [
       'ProperViewService',
       function (ProperViewService) {
 
