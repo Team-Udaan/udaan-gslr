@@ -2,7 +2,7 @@
   "name": "udaan-gslr",
   "version": "1.0.0",
   "description": "Udaan GSLR Voting App",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "gulp test"
   },
