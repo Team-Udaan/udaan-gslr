@@ -29,7 +29,7 @@
           try {
             var eventData = JSON.parse(event.data);
             var channel = socket.channels.filter(function (channel) {
-              return channel.eventName == eventData.name;
+              return channel.name == eventData.name;
             })[0];
             if (channel) channel.broadcast(eventData.data);
             else {
@@ -49,10 +49,10 @@
           }
         },
         config: {
-          url: window.GSLR_DATA.WEBSOCKET_URL,
-          debug: window.GSLR_DATA.WEBSOCKET_DEBUG,
-          autoOpen: window.GSLR_DATA.WEBSOCKET_AUTO_OPEN,
-          retryInterval: window.GSLR_DATA.WEBSOCKET_RETRY_INTERVAL
+          url: window.GSLR.WEBSOCKETS.URL,
+          debug: window.GSLR.WEBSOCKETS.DEBUG,
+          autoOpen: window.GSLR.WEBSOCKETS.AUTO_OPEN,
+          retryInterval: window.GSLR.WEBSOCKETS.RETRY_INTERVAL
         },
         hooks: {
           open: angular.noop,
