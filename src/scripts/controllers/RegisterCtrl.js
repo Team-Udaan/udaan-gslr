@@ -5,12 +5,9 @@
     .controller('RegisterCtrl', [
       'ProperViewService',
       function (ProperViewService) {
-
         if (ProperViewService()) {
 
-
         }
-
       }]);
 
 })();

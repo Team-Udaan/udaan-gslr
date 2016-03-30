@@ -5,7 +5,8 @@
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/connect', {
-          templateUrl: 'templates/connect.html'
+          templateUrl: 'templates/connect.html',
+          controller: 'ConnectCtrl'
         })
         .when('/register', {
           templateUrl: 'templates/register.html',

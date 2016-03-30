@@ -5,11 +5,9 @@
     .controller('LoginCtrl', [
       'ProperViewService',
       function (ProperViewService) {
-
         if (ProperViewService()) {
 
         }
-
       }]);
 
 })();

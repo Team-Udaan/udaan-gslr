@@ -5,11 +5,9 @@
     .controller('ConnectCtrl', [
       'ProperViewService',
       function (ProperViewService) {
-
         if (ProperViewService()) {
 
         }
-
       }]);
 
 })();

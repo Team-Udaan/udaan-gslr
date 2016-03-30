@@ -5,11 +5,9 @@
     .controller('PollCtrl', [
       'ProperViewService',
       function (ProperViewService) {
-
         if (ProperViewService()) {
 
         }
-
       }]);
 
 })();
