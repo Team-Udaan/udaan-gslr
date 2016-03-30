@@ -8,10 +8,11 @@
       function (WebSocketService, $location) {
         return function () {
           var view = $location.url();
-          if (view == 'connect' && WebSocketService.status.connected) {
+          var connected = WebSocketService.socket.status.connected;
+          if (view == '/connect' && connected) {
             $location.url('/register');
             return false;
-          } else if (!WebSocketService.status.connected) {
+          } else if (!connected) {
             $location.url('/connect');
             return false;
           } else return true;

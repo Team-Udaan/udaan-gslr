@@ -4,15 +4,12 @@
   angular.module('gslrApp')
     .controller('GSLRCtrl', [
       'WebSocketService',
-      '$location',
-      function (WebSocketService, $location) {
+      'ProperViewService',
+      '$scope',
+      function (WebSocketService, ProperViewService, $scope) {
 
-        WebSocketService.hooks.open = function () {
-          $location.url('/register');
-        };
-
-        WebSocketService.hooks.close = function () {
-          $location.url('/connect');
+        WebSocketService.socket.hooks.open = WebSocketService.socket.hooks.close = function () {
+          $scope.$apply(ProperViewService);
         };
 
       }]);
