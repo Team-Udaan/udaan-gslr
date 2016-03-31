@@ -17,7 +17,7 @@
           controller: 'LoginCtrl'
         })
         .when('/poll', {
-          templateUrl: 'templates/login.html',
+          templateUrl: 'templates/poll.html',
           controller: 'PollCtrl'
         })
         .otherwise({
