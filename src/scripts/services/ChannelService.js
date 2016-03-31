@@ -6,7 +6,7 @@
       'WebSocketService',
       function (WebSocketService) {
         return {
-          meta: WebSocketService.Channel(GSLR.CHANNELS.META)
+          meta: WebSocketService.Channel(window.GSLR.CHANNELS.META)
         };
       }]);
 
