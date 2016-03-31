@@ -11,26 +11,31 @@
           var view = $location.url();
           var connected = WebSocketService.socket.status.connected;
 
-          // Is on `to connect` view and connected already
-          if (view == '/connect' && connected) {
+          if (!connected) {
+            if (view == '/connect') return true;
+            $location.url('/connect');
+            return false;
+          }
+
+          if (!State.user.registered) {
+            if (view == '/register') return true;
             $location.url('/register');
             return false;
           }
 
-          // Is on `to register` view and registered already
-          if (view == '/register' && State.user.registered) {
+          if (!State.user.loggedIn) {
+            if (view == '/login') return true;
             $location.url('/login');
             return false;
           }
 
-          // Is on `to login` view and loggedIn already
-          if (view != '/login' && State.user.loggedIn) {
-            $location.url('/poll');
-            return false;
-          }
-
-          return true;
+          if (view == '/poll') return true;
+          $location.url('/poll');
+          return false;
         }
-      }]);
+      }
+    ])
+  ;
 
-})();
+})
+();
