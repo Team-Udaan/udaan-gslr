@@ -21,7 +21,7 @@
           $scope.login = function () {
             if ($scope.user.otp.length != 4) {
               // todo: toast 4 digit otp
-              alert('4 Digit One Time Password is required.');
+              alert('4 Character One Time Password is required.');
               return;
             }
             ChannelService.login.listenOnce(function (data) {
