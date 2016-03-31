@@ -16,9 +16,11 @@ wss.on('connection', function (socket) {
 
   socket.on('message', function (data) {
     console.log(data);
-    socket.send(data);
+    data = JSON.parse(data);
+    data.data.status = 'success';
+    socket.send(JSON.stringify(data));
   });
 
 });
 
-console.log('WS is listening: http://localhost:' + port);
+console.log('WS is listening: ws://localhost:' + port);
