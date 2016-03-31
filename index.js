@@ -12,10 +12,6 @@ var wss = new WebSocketServer({
   port: port
 });
 
-wss.on('open', function () {
-  console.log('WS is listening: http://localhost:' + port);
-});
-
 wss.on('connection', function (socket) {
 
   socket.on('message', function (data) {
@@ -24,3 +20,5 @@ wss.on('connection', function (socket) {
   });
 
 });
+
+console.log('WS is listening: http://localhost:' + port);
