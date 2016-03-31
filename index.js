@@ -17,6 +17,7 @@ wss.on('connection', function (socket) {
   socket.on('message', function (data) {
     console.log(data);
     data = JSON.parse(data);
+    data.data = data.data || {};
     data.data.status = 'success';
     socket.send(JSON.stringify(data));
   });
