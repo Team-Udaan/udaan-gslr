@@ -6,5 +6,8 @@
 //     DEBUG: false,
 //     AUTO_OPEN: true,
 //     RETRY_INTERVAL: 5
+//   },
+//   CHANNELS: {
+//     META: 'meta'
 //   }
 // };
