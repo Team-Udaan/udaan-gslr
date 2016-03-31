@@ -9,20 +9,23 @@
         onopen: function (event) {
           if (socket.config.debug) console.log(event);
           socket.status.connected = true;
-          socket.status.willAttemptAgain = 0;
+          if (!socket.status.bootstrapped) {
+            socket.status.bootstrapped = true;
+            socket.hooks.bootstrap();
+          }
           socket.hooks.open();
         },
         onclose: function (event) {
           if (socket.config.debug) console.log(event);
           socket.status.connected = false;
           socket.hooks.close();
-          if (socket.config.autoOpen) setTimeout(socket.open, socket.config.retryInterval * 1000, true);
+          if (socket.config.autoOpen) setTimeout(socket.open, socket.config.retryInterval * 1000);
         },
         onerror: function (event) {
           if (socket.config.debug) console.log(event);
           socket.status.connected = false;
           socket.hooks.close();
-          if (socket.config.autoOpen) setTimeout(socket.open, socket.config.retryInterval * 1000, true);
+          if (socket.config.autoOpen) setTimeout(socket.open, socket.config.retryInterval * 1000);
         },
         onmessage: function (event) {
           if (socket.config.debug) console.log(event);
@@ -41,12 +44,7 @@
         },
         status: {
           connected: false,
-          lastAttempted: 0,
-          willAttemptAgain: 0,
-          attempt: function () {
-            this.lastAttempted = Date.now();
-            this.willAttemptAgain = this.lastAttempted + socket.config.retryInterval;
-          }
+          bootstrapped: false
         },
         config: {
           url: window.GSLR.WEBSOCKETS.URL,
@@ -57,7 +55,7 @@
         hooks: {
           open: angular.noop,
           close: angular.noop,
-          retry: angular.noop
+          bootstrap: angular.noop
         },
         channels: [],
         open: function () {
@@ -68,8 +66,6 @@
             socket.ws.onclose = socket.onclose;
             socket.ws.onerror = socket.onerror;
             socket.ws.onmessage = socket.onmessage;
-            socket.status.attempt();
-            if (retry) socket.hooks.retry();
             return true;
           }
           return false;
