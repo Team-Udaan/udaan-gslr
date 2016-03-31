@@ -8,6 +8,7 @@
 //     RETRY_INTERVAL: 5
 //   },
 //   CHANNELS: {
-//     META: 'meta'
+//     META: 'meta',
+//     REGISTER: 'register'
 //   }
 // };
