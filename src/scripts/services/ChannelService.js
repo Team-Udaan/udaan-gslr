@@ -7,7 +7,8 @@
       function (WebSocketService) {
         return {
           meta: WebSocketService.Channel(window.GSLR.CHANNELS.META),
-          register: WebSocketService.Channel(window.GSLR.CHANNELS.REGISTER)
+          register: WebSocketService.Channel(window.GSLR.CHANNELS.REGISTER),
+          login: WebSocketService.Channel(window.GSLR.CHANNELS.LOGIN)
         };
       }]);
 

@@ -9,7 +9,8 @@
 //   },
 //   CHANNELS: {
 //     META: 'meta',
-//     REGISTER: 'register'
+//     REGISTER: 'register',
+//     LOGIN: 'login'
 //   },
 //   CODES: {
 //     SUCCESS: 'success',

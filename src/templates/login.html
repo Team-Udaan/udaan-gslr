@@ -1,1 +1,29 @@
-This is Login page.
+<!--suppress HtmlUnknownTag -->
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <md-headline>One Time Password is sent to {{user.mobile}}.</md-headline>
+    </md-card-title-text>
+  </md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <div layout="column" layout-align="center center">
+      <md-input-container>
+        <label>One Time Password</label>
+        <input type="text"
+               id="otp"
+               ng-model="user.otp"
+               ng-keypress="otpKeyPress($event)"
+               required
+               md-maxlength="4"
+               maxlength="4"
+               title="One Time Password">
+      </md-input-container>
+    </div>
+  </md-card-content>
+  <md-divider></md-divider>
+  <div layout="row" layout-align="space-between">
+    <md-button class="md-primary" tabindex="-1" ng-click="notMyNumber()">Not My Number</md-button>
+    <md-button class="md-primary" ng-click="login()">Login</md-button>
+  </div>
+</md-card>
