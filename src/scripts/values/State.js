@@ -4,7 +4,7 @@
   angular.module('gslrApp')
     .value('State', {
       name: '',
-      year: 0,
+      year: '',
       gs: {
         name: '',
         mascot: ''
@@ -14,7 +14,7 @@
         mascot: ''
       },
       user: {
-        mobile: 0,
+        mobile: '',
         registered: false,
         otp: '',
         loggedIn: false

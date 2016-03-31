@@ -99,6 +99,14 @@
             this.listeners.push(listener);
             return this.listeners.length - 1;
           },
+          listenOnce: function (listener) {
+            var that = this;
+            var id = this.listen(function (data) {
+              listener(data);
+              that.ignore(id);
+            });
+            return id;
+          },
           ignore: function (listenerID) {
             this.listeners.splice(listenerID, 1);
           },
