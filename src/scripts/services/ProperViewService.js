@@ -12,7 +12,7 @@
           if (view == '/connect' && connected) {
             $location.url('/register');
             return false;
-          } else if (!connected) {
+          } else if (view != '/connect' && !connected) {
             $location.url('/connect');
             return false;
           } else return true;
