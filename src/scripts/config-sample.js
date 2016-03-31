@@ -10,5 +10,14 @@
 //   CHANNELS: {
 //     META: 'meta',
 //     REGISTER: 'register'
+//   },
+//   CODES: {
+//     SUCCESS: 'success',
+//     INCORRECT: {
+//       OTP: 'otp'
+//     },
+//     NOT: {
+//       REGISTERED: 'mobile'
+//     }
 //   }
 // };
