@@ -14,6 +14,8 @@ var wss = new WebSocketServer({
 
 wss.on('connection', function (socket) {
 
+  console.log('Connection');
+
   socket.on('message', function (data) {
     console.log(data);
     data = JSON.parse(data);
