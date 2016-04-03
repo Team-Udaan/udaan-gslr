@@ -8,7 +8,8 @@
         return {
           meta: WebSocketService.Channel(window.GSLR.CHANNELS.META),
           register: WebSocketService.Channel(window.GSLR.CHANNELS.REGISTER),
-          login: WebSocketService.Channel(window.GSLR.CHANNELS.LOGIN)
+          login: WebSocketService.Channel(window.GSLR.CHANNELS.LOGIN),
+          event: WebSocketService.Channel(window.GSLR.CHANNELS.EVENT)
         };
       }]);
 

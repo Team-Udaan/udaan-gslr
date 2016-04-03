@@ -10,7 +10,8 @@
 //   CHANNELS: {
 //     META: 'meta',
 //     REGISTER: 'register',
-//     LOGIN: 'login'
+//     LOGIN: 'login',
+//     EVENT: 'event'
 //   },
 //   CODES: {
 //     SUCCESS: 'success',

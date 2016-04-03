@@ -1,1 +1,28 @@
-This is Poll page.
+<!--suppress HtmlUnknownTag -->
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <md-headline>
+        <h4 ng-if="currentEvent">{{currentEvent.name}}</h4>
+        <h4 ng-if="!currentEvent">Waiting for next event.</h4>
+      </md-headline>
+    </md-card-title-text>
+  </md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <div ng-if="currentEvent">
+      <ul>
+        <li>GS's team : {{currentEvent.gs.name}}</li>
+        <li>LR's team : {{currentEvent.lr.name}}</li>
+      </ul>
+    </div>
+    <div ng-if="!currentEvent" layout="row" layout-align="center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+  </md-card-content>
+  <md-divider></md-divider>
+  <div layout="row" layout-align="center center">
+    <md-button class="md-primary" disabled="!currentEvent" ng-click="gs()">{{gs.mascot}} (GS)</md-button>
+    <md-button class="md-primary" disabled="!currentEvent" ng-click="lr()">{{lr.mascot}} (LR)</md-button>
+  </div>
+</md-card>
