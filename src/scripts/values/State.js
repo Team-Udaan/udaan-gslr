@@ -18,12 +18,6 @@
         registered: false,
         otp: '',
         loggedIn: false
-      },
-      currentEvent: {
-        name: '',
-        gsTeamName: '',
-        lrTeamName: '',
-        voted: ''
       }
     });
 
